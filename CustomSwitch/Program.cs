@@ -14,7 +14,8 @@ namespace CustomSwitch {
     public enum EmpOpType {
         Create,
         Edit,
-        Delete
+        Delete,
+        View
     }
 
     public enum PaymentStatus {
@@ -33,6 +34,8 @@ namespace CustomSwitch {
                     .Then(x => {
                         Console.WriteLine("There will be emp edit op");
                     })
+                .Case(EmpOpType.View)
+                    .Pass()
                 .Case(EmpOpType.Delete)
                     .Then(x => {
                         Console.WriteLine("Emp deleted");

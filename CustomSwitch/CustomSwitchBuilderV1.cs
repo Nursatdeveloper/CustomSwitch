@@ -33,6 +33,7 @@ namespace CustomSwitch {
         public bool CaseExecuted { get; set; }
         public T Value { get; set; }
         public ICaseResult<T> Then(ExecuteAction<T> executeAction);
+        public ICaseResult<T> Pass();
     }
     public class ThenResult<T>: IThenResult<T> {
         public bool IsThisCase { get; set; }
@@ -55,6 +56,10 @@ namespace CustomSwitch {
                 return new CaseResult<T>(CaseExecuted, Value);
             }
             CaseExecuted = false;
+            return new CaseResult<T>(CaseExecuted, Value);
+        }
+
+        public ICaseResult<T> Pass() {
             return new CaseResult<T>(CaseExecuted, Value);
         }
     }
